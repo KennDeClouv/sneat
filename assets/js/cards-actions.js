@@ -1,0 +1,14 @@
+document.addEventListener("DOMContentLoaded",function(){var e=Array.from(document.querySelectorAll(".card-collapsible")),t=Array.from(document.querySelectorAll(".card-expand")),l=Array.from(document.querySelectorAll(".card-close")),r=document.getElementById("sortable-4"),e=(e.forEach(function(t){t.addEventListener("click",function(e){e.preventDefault(),new bootstrap.Collapse(t.closest(".card").querySelector(".collapse")),t.closest(".card-header").classList.toggle("collapsed"),Helpers._toggleClass(t.firstElementChild,"bx-chevron-down","bx-chevron-up")})}),t.forEach(function(t){t.addEventListener("click",function(e){e.preventDefault(),Helpers._toggleClass(t.firstElementChild,"bx-fullscreen","bx-exit-fullscreen"),t.closest(".card").classList.toggle("card-fullscreen")})}),document.addEventListener("keyup",function(e){e.preventDefault(),"Escape"===e.key&&(e=document.querySelector(".card-fullscreen"))&&(Helpers._toggleClass(e.querySelector(".card-expand").firstElementChild,"bx-fullscreen","bx-exit-fullscreen"),e.classList.toggle("card-fullscreen"))}),l.forEach(function(t){t.addEventListener("click",function(e){e.preventDefault(),t.closest(".card").classList.add("d-none")})}),r&&Sortable.create(r,{animation:500,handle:".card"}),document.querySelectorAll(".card-reload"));e&&(document.querySelectorAll(".card-action").forEach((e,t)=>{e.dataset.cardId="card-"+(t+1)}),e.forEach(t=>{t.addEventListener("click",function(e){e.preventDefault();let l=t.closest(".card-action");if(l){let t=l.dataset.cardId;Block.standard(`[data-card-id="${t}"]`,{backgroundColor:"dark"===document.documentElement.getAttribute("data-bs-theme")?"rgba("+window.Helpers.getCssVar("black-rgb")+", 0.5)":"rgba("+window.Helpers.getCssVar("white-rgb")+", 0.5)",svgSize:"0px"});e=l.querySelector(".notiflix-block");e&&(e.innerHTML=`
+          <div class="sk-fold sk-primary">
+            <div class="sk-fold-cube"></div>
+            <div class="sk-fold-cube"></div>
+            <div class="sk-fold-cube"></div>
+            <div class="sk-fold-cube"></div>
+          </div>
+          <h5>LOADING...</h5>
+        `),setTimeout(function(){Block.remove(`[data-card-id="${t}"]`);var e=l.querySelector(".card-alert");e&&(e.innerHTML=`
+              <div class="alert alert-solid-danger alert-dismissible fade show" role="alert">
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                <span class="fw-medium">Holy grail!</span> Your success/error message here.
+              </div>
+            `)},2500)}else console.error("Closest card with .card-action class not found!")})}))});

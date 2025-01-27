@@ -1,0 +1,1 @@
+document.addEventListener("DOMContentLoaded",function(e){let t=document.querySelector(".invoice-amount"),n=(t&&t.addEventListener("input",e=>{t.value=formatNumeral(e.target.value,{numeralThousandsGroupStyle:"thousand"})}),new Date),a=document.querySelectorAll(".invoice-date");a&&a.forEach(function(e){e.flatpickr({monthSelectorType:"static",defaultDate:n,static:!0})})});
